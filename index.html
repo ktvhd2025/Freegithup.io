@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วิธีลง GitHub Pages - Sports Streaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #4fc3f7;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .steps {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        .steps h2 {
+            color: #4fc3f7;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4fc3f7;
+        }
+        
+        .step {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #4fc3f7;
+            color: #0f2027;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .step h3 {
+            margin-bottom: 10px;
+            color: #ffcc80;
+        }
+        
+        .code-container {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        .code-container h2 {
+            color: #4fc3f7;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4fc3f7;
+        }
+        
+        .code-block {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #ffcc80;
+        }
+        
+        .copy-btn {
+            background: #4fc3f7;
+            color: #0f2027;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #29b6f6;
+        }
+        
+        pre {
+            margin: 0;
+            color: #d4d4d4;
+        }
+        
+        .token.comment {
+            color: #6a9955;
+        }
+        
+        .token.tag {
+            color: #569cd6;
+        }
+        
+        .token.attr-name {
+            color: #9cdcfe;
+        }
+        
+        .token.attr-value {
+            color: #ce9178;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 8px;
+            z-index: 2000;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .important-note {
+            background: rgba(255, 152, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .important-note h3 {
+            color: #ffcc80;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cloud-upload-alt"></i> วิธีลง GitHub Pages</h1>
+            <p>ขั้นตอนการอัพโหลดเว็บสตรีมมิ่งช่องกีฬาขึ้น GitHub Pages</p>
+        </header>
+        
+        <div class="content">
+            <div class="steps">
+                <h2><i class="fas fa-list-ol"></i> ขั้นตอนการลง GitHub Pages</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>สร้างบัญชี GitHub</h3>
+                    <p>ไปที่ <a href="https://github.com/" target="_blank" style="color: #4fc3f7;">github.com</a> และสมัครบัญชีใหม่ (หากยังไม่มี)</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>สร้าง Repository ใหม่</h3>
+                    <p>คลิกปุ่ม "+" มุมขวาบน และเลือก "New repository"</p>
+                    <p>ตั้งชื่อ repository เช่น <strong>sports-streaming</strong></p>
+                    <p>เลือก "Public" และสร้าง repository</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>อัพโหลดไฟล์</h3>
+                    <p>ใน repository ที่สร้างใหม่ ให้คลิก "Add file" → "Upload files"</p>
+                    <p>ลากไฟล์ index.html ที่มีโค้ดเว็บสตรีมมิ่งของคุณมาใส่ในนี้</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>ตั้งค่า GitHub Pages</h3>
+                    <p>ไปที่แท็บ "Settings" → "Pages"</p>
+                    <p>ที่ส่วน "Branch" ให้เลือก "main" และกด Save</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>รอการ deploy</h3>
+                    <p>รอสักครู่ (ไม่เกิน 2-3 นาที) แล้ว刷新หน้า</p>
+                    <p>คุณจะเห็นลิงก์ไปยังเว็บไซต์ของคุณ เช่น <strong>https://username.github.io/sports-streaming</strong></p>
+                </div>
+            </div>
+            
+            <div class="code-container">
+                <h2><i class="fas fa-code"></i> ตัวอย่างโค้ด HTML</h2>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>index.html</span>
+                        <button class="copy-btn" onclick="copyCode('html-code')">คัดลอก</button>
+                    </div>
+                    <pre id="html-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="th"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;สตรีมมิ่งช่องกีฬา | Play Sports Channels&lt;/title&gt;
+    &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+        }
+        
+        /* ... รายละเอียดสไตล์เพิ่มเติม ... */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;header&gt;
+            &lt;h1&gt;&lt;i class="fas fa-play-circle"&gt;&lt;/i&gt; สตรีมมิ่งช่องกีฬา&lt;/h1&gt;
+            &lt;p&gt;ชมการถ่ายทอดสดกีฬาทุกประเภทจากทุกมุมโลก&lt;/p&gt;
+        &lt;/header&gt;
+        
+        &lt;div class="channels-grid" id="channelsContainer"&gt;
+            &lt;!-- ช่องสตรีมมิ่งจะถูกเพิ่มที่นี่โดย JavaScript --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;script&gt;
+        // ข้อมูลช่องสตรีมมิ่ง
+        const channels = [
+            {
+                name: "Play Sports1🇹🇭",
+                image: "https://cdn.imgchest.com/files/7mmc96wezv7.png",
+                url: "https://49-231-34-108-rewriter.ais-vidnt.com/ais/play/anevia/live/eds/TL001/HLS/TL001.m3u8",
+                referer: "https://olympic-embed.ais-vidnt.com",
+                userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
+                playInNatPlayer: "true"
+            },
+            // ... ช่องอื่น ๆ ...
+        ];
+
+        // เรนเดอร์ช่องสตรีมมิ่ง
+        function renderChannels(channelsArray, viewMode = 'grid') {
+            // ... โค้ด JavaScript ...
+        }
+        
+        // เปิดใน WisePlay โดยใช้รูปแบบ Intent
+        function openInWisePlay(channel) {
+            // ... โค้ด JavaScript ...
+        }
+        
+        // เรนเดอร์ช่องทั้งหมดเมื่อโหลดหน้า
+        document.addEventListener('DOMContentLoaded', function() {
+            renderChannels(channels, 'grid');
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>README.md</span>
+                        <button class="copy-btn" onclick="copyCode('readme-code')">คัดลอก</button>
+                    </div>
+                    <pre id="readme-code"><code># Sports Streaming Website
+
+เว็บสตรีมมิ่งช่องกีฬาด้วย HTML, CSS และ JavaScript
+
+## คุณสมบัติ
+
+- แสดงช่องสตรีมมิ่งกีฬาหลากหลายประเภท
+- คลิกเพื่อเปิดใน WisePlay โดยอัตโนมัติ
+- คลิกขวาเพื่อคัดลอก URL สตรีม
+- การค้นหาช่อง
+- มุมมองแบบกริดและการ์ด
+
+## วิธีการใช้งาน
+
+1. คลิกที่โลโก้ช่องเพื่อเปิดใน WisePlay
+2. คลิกขวาที่โลโก้ช่องเพื่อคัดลอก URL
+3. ใช้ช่องค้นหาเพื่อค้นหาช่องที่ต้องการ
+
+## การติดตั้งบน GitHub Pages
+
+1. อัพโหลดไฟล์ index.html ไปยัง repository
+2. ไปที่ Settings → Pages
+3. เลือก Branch หลัก (main/master)
+4. รอการ deploy และเข้าใช้งานที่ https://username.github.io/repository-name</code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="important-note">
+            <h3><i class="fas fa-exclamation-circle"></i> หมายเหตุสำคัญ</h3>
+            <p>• GitHub Pages ใช้ได้กับ static content เท่านั้น (HTML, CSS, JavaScript)</p>
+            <p>• ไฟล์หลักต้องชื่อ <strong>index.html</strong> ถึงจะทำงานได้ถูกต้อง</p>
+            <p>• การเปลี่ยนแปลงอาจใช้เวลา 1-2 นาทีในการอัพเดทบน GitHub Pages</p>
+            <p>• หากมีปัญหา ให้ตรวจสอบ Console (F12) เพื่อดูข้อผิดพลาด</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 Sports Streaming Service | All rights reserved</p>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        คัดลอกโค้ดเรียบร้อยแล้ว
+    </div>
+
+    <script>
+        // ฟังก์ชันคัดลอกโค้ด
+        function copyCode(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText || element.textContent;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // แสดงการแจ้งเตือน
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
